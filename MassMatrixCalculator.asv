@@ -1,12 +1,11 @@
 function M = MassMatrixCalculator(currentQ, S, M, G)
     Mtemp = zeros(size(currentQ,1),size(currentQ,1));
-    for i = 1:1:size(currentQ,1)
+    for i = 1:1:6
         Jib = zeros(6,size(currentQ,1)); % define initial body jacobian and mass matrix sizes
         disp(S(:,1:i));
         Jib(:,1:i) = jacobe(S(:,1:i), M(:,:,i), currentQ); % iteratively calculate body jacobian padding w/ zeros
         disp(Jib);
         Mtemp = Mtemp + Jib' * G(:,:,i) * Jib; % concatenate Mtemp mass matrix
-        disp(Mtemp);
     end
     M = Mtemp;
     disp(M);

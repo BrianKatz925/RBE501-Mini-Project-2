@@ -8,7 +8,7 @@
 %%% Given a Twist V expressed with respect to some arbitrary reference
 %%% frame, calculate its representation in a new frame whose position and
 %%% orientation is described by a homogeneous transformation matrix T.
-function twist_inB = adjoint(twist_inA,T_AB)
+function twist_inB = adjointTwist(twist_inA,T_AB)
     % pulling rotation and position matrix from given homogeneous T matrix
     R = [T_AB(1, 1:3);
         T_AB(2, 1:3);
